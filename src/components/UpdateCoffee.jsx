@@ -19,7 +19,7 @@ const UpdateCoffee = () => {
         const UpdatedCoffee={name,quantity,supplier,taste,category,details,photo};
 
         //send data to the server
-        fetch('http://localhost:5000/coffee',{
+        fetch(`http://localhost:5000/coffee/${_id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'
@@ -29,10 +29,10 @@ const UpdateCoffee = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log(data);
-            if(data.insertedId){
+            if(data.modifiedCount>0){
                 Swal.fire({
                     title: 'Success!',
-                    text: 'User added successfully',
+                    text: 'coffee added successfully',
                     icon: 'success',
                     confirmButtonText: 'ok'
                   })
